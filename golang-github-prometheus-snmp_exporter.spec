@@ -16,7 +16,7 @@
 
 Name:           golang-%{provider}-%{project}-%{repo}
 Version:        0.15.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        SNMP Exporter for Prometheus
 License:        ASL 2.0
 URL:            https://%{provider_prefix}
@@ -91,7 +91,7 @@ go test -mod vendor
 %pre
 getent group snmp_exporter > /dev/null || groupadd -r snmp_exporter
 getent passwd snmp_exporter > /dev/null || \
-    useradd -rg snmp_exporter -s /sbin/nologin \
+    useradd -Mrg snmp_exporter -s /sbin/nologin \
             -c "snmp Prometheus exporter" snmp_exporter
 
 %post
@@ -110,3 +110,5 @@ getent passwd snmp_exporter > /dev/null || \
 %endif
 
 %changelog
+* Thu Sep 12 2019 Ben Reedy <breed808@breed808.com> - 0.15.0-2
+- Disable creation of home directory for snmp_exporter user
