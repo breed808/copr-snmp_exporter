@@ -15,8 +15,8 @@
 %global import_path     %{provider_prefix}
 
 Name:           golang-%{provider}-%{project}-%{repo}
-Version:        0.15.0
-Release:        2%{?dist}
+Version:        0.17.0
+Release:        1%{?dist}
 Summary:        SNMP Exporter for Prometheus
 License:        ASL 2.0
 URL:            https://%{provider_prefix}
@@ -110,5 +110,8 @@ getent passwd snmp_exporter > /dev/null || \
 %endif
 
 %changelog
+* Tue Mar 31 2020 Ben Reedy <breed808@breed808.com> - 0.17.0-1
+- Update to latest upstream release
+
 * Thu Sep 12 2019 Ben Reedy <breed808@breed808.com> - 0.15.0-2
 - Disable creation of home directory for snmp_exporter user
